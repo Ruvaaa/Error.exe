@@ -1,13 +1,36 @@
 {
   "name": "error-exe",
   "displayName": "Error.exe",
-  "description": "A computer that reacts to your errors",
+  "description": "A vintage computer companion that reacts to diagnostics and celebrates builds and tests.",
+  "publisher": "Ruvaaaaaa",
+  "icon": "icon.png",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Ruvaaa/Error.exe"
+  },
+  "homepage": "https://github.com/Ruvaaa/Error.exe#readme",
+  "bugs": {
+    "url": "https://github.com/Ruvaaa/Error.exe/issues"
+  },
+  "license": "MIT",
   "version": "0.0.1",
   "engines": {
     "vscode": "^1.144.0"
   },
   "categories": [
+    "Machine Learning",
+    "Testing",
+    "Visualization",
     "Other"
+  ],
+  "keywords": [
+    "diagnostics",
+    "errors",
+    "warnings",
+    "build",
+    "tests",
+    "machine learning",
+    "companion"
   ],
   "activationEvents": [
     "onView:errorExe.companion",
@@ -80,7 +103,7 @@
           "type": "boolean",
           "default": true,
           "scope": "application",
-          "description": "Show the Error.exe companion in the Explorer sidebar."
+          "description": "Show Error.exe in the Explorer and Activity Bar views."
         },
         "errorExe.showWarnings": {
           "type": "boolean",
