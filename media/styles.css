@@ -1,0 +1,300 @@
+:root {
+	color-scheme: dark;
+	font-family: var(--vscode-font-family);
+	font-size: var(--vscode-font-size);
+	color: var(--vscode-foreground);
+}
+
+* {
+	box-sizing: border-box;
+}
+
+body {
+	margin: 0;
+	padding: 10px 12px 14px;
+	background: var(--vscode-sideBar-background);
+}
+
+button {
+	font: inherit;
+}
+
+#companion {
+	--screen: #07120d;
+	--phosphor: #72ef8a;
+	--secondary: #a4d5a5;
+	max-width: 430px;
+	margin: 0 auto;
+}
+
+#companion.state-warning {
+	--phosphor: #ffc857;
+	--secondary: #ff9f43;
+}
+
+#companion.state-multiple-errors {
+	--phosphor: #ff9d43;
+	--secondary: #ffd166;
+}
+
+#companion.state-system-overload {
+	--phosphor: #ff5b50;
+	--secondary: #ffc857;
+	--screen: #190d0a;
+}
+
+#companion.achievement-active {
+	--phosphor: #72ef8a;
+	--secondary: #c3ffd0;
+	--screen: #07120d;
+}
+
+.computer {
+	display: block;
+	width: 100%;
+	margin: 0;
+	padding: 0;
+	border: 0;
+	background: transparent;
+	color: inherit;
+	cursor: pointer;
+}
+
+.computer:focus-visible,
+.count:focus-visible,
+.quiet-button:focus-visible {
+	outline: 2px solid var(--vscode-focusBorder);
+	outline-offset: 3px;
+}
+
+.computer-art {
+	position: relative;
+	display: block;
+	width: 100%;
+	aspect-ratio: 1140 / 1160;
+}
+
+#computer-image {
+	display: block;
+	width: 100%;
+	height: 100%;
+	object-fit: contain;
+}
+
+.crt {
+	position: absolute;
+	top: 15.2%;
+	left: 21.7%;
+	display: flex;
+	width: 56.7%;
+	height: 42%;
+	flex-direction: column;
+	overflow: hidden;
+	padding: 5.2% 5.4%;
+	border-radius: 12% / 10%;
+	background:
+		repeating-linear-gradient(0deg, transparent 0 2px, rgb(255 255 255 / 3%) 3px 4px),
+		radial-gradient(ellipse at center, #13251a 0%, var(--screen) 76%);
+	box-shadow: inset 0 0 18px rgb(0 0 0 / 70%);
+	color: var(--phosphor);
+	font-family: var(--vscode-editor-font-family), Consolas, monospace;
+	font-size: clamp(6px, 2.45vw, 11px);
+	font-weight: 700;
+	line-height: 1.65;
+	text-align: left;
+	text-shadow: 0 0 4px color-mix(in srgb, var(--phosphor) 50%, transparent);
+}
+
+#terminal-status,
+#terminal-message,
+#terminal-counts {
+	display: block;
+	overflow-wrap: anywhere;
+}
+
+#terminal-message {
+	margin-top: 5%;
+	color: var(--secondary);
+}
+
+#terminal-counts {
+	margin-top: 3%;
+	color: var(--secondary);
+}
+
+#expression {
+	margin-top: auto;
+	font-size: 2.4em;
+	line-height: 1;
+}
+
+.cursor {
+	width: 0.65em;
+	height: 1em;
+	margin-top: 3%;
+	background: var(--phosphor);
+}
+
+.animations-enabled .cursor {
+	animation: cursor-blink 1.1s steps(2, start) infinite;
+}
+
+header {
+	margin-top: -1px;
+}
+
+h1 {
+	margin: 0;
+	font-size: 1.05em;
+	font-weight: 700;
+	letter-spacing: 0.12em;
+}
+
+.status-label {
+	margin: 4px 0 0;
+	color: var(--phosphor);
+	font-family: var(--vscode-editor-font-family), Consolas, monospace;
+	font-size: 0.88em;
+	font-weight: 700;
+}
+
+.message {
+	min-height: 1.5em;
+	margin: 9px 0;
+	color: var(--vscode-descriptionForeground);
+}
+
+.counts {
+	display: flex;
+	gap: 8px;
+}
+
+.count {
+	display: flex;
+	flex: 1;
+	align-items: center;
+	justify-content: space-between;
+	min-width: 0;
+	padding: 6px 8px;
+	border: 1px solid var(--vscode-panel-border);
+	border-radius: 3px;
+	background: var(--vscode-sideBar-background);
+	color: var(--vscode-foreground);
+	cursor: pointer;
+}
+
+.count:hover,
+.quiet-button:hover {
+	background: var(--vscode-toolbar-hoverBackground);
+}
+
+.count-error strong {
+	color: var(--vscode-errorForeground);
+}
+
+.count-warning strong {
+	color: var(--vscode-editorWarning-foreground);
+}
+
+footer {
+	display: flex;
+	justify-content: flex-end;
+	gap: 12px;
+	margin-top: 8px;
+}
+
+.quiet-button {
+	padding: 3px 0;
+	border: 0;
+	background: transparent;
+	color: var(--vscode-descriptionForeground);
+	cursor: pointer;
+}
+
+.paused-label,
+.disabled-label {
+	margin: 8px 0 0;
+	color: var(--vscode-descriptionForeground);
+	font-size: 0.85em;
+	text-align: center;
+}
+
+.state-multiple-errors .crt {
+	background:
+		repeating-linear-gradient(0deg, transparent 0 2px, rgb(255 255 255 / 5%) 3px 4px),
+		radial-gradient(ellipse at center, #2a1c0d 0%, var(--screen) 76%);
+}
+
+.state-system-overload .crt {
+	background:
+		repeating-linear-gradient(0deg, transparent 0 2px, rgb(255 255 255 / 7%) 3px 4px),
+		radial-gradient(ellipse at center, #391510 0%, var(--screen) 76%);
+}
+
+.achievement-active .crt {
+	background:
+		repeating-linear-gradient(0deg, transparent 0 2px, rgb(255 255 255 / 3%) 3px 4px),
+		radial-gradient(ellipse at center, #13251a 0%, var(--screen) 76%);
+}
+
+.animations-enabled.achievement-active .computer-art {
+	animation: achievement-celebrate 1.8s ease-in-out infinite alternate;
+}
+
+.animations-enabled.state-multiple-errors .crt {
+	animation: screen-jitter 7s steps(1, end) infinite;
+}
+
+.animations-enabled.state-system-overload .crt {
+	animation: screen-flicker 2.8s steps(1, end) infinite;
+}
+
+.animations-enabled.achievement-active .crt {
+	animation: none;
+}
+
+@keyframes cursor-blink {
+	to {
+		visibility: hidden;
+	}
+}
+
+@keyframes screen-jitter {
+	0%, 96%, 100% {
+		transform: translateX(0);
+	}
+	97% {
+		transform: translateX(1px);
+	}
+	98% {
+		transform: translateX(-1px);
+	}
+}
+
+@keyframes screen-flicker {
+	0%, 94%, 96%, 98%, 100% {
+		opacity: 1;
+	}
+	95%, 97% {
+		opacity: 0.82;
+	}
+}
+
+@keyframes achievement-celebrate {
+	from {
+		filter: drop-shadow(0 0 0 transparent);
+		transform: translateY(0);
+	}
+	to {
+		filter: drop-shadow(0 0 7px rgb(114 239 138 / 24%));
+		transform: translateY(-2px);
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	* {
+		animation-duration: 0.01ms !important;
+		animation-iteration-count: 1 !important;
+		scroll-behavior: auto !important;
+	}
+}

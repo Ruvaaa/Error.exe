@@ -1,0 +1,181 @@
+{
+  "name": "error-exe",
+  "displayName": "Error.exe",
+  "description": "A computer that reacts to your errors",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.144.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onView:errorExe.companion",
+    "onView:errorExe.main",
+    "onStartupFinished"
+  ],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "errorExe",
+          "title": "Error.exe",
+          "icon": "./assets/error-exe-icon.svg"
+        }
+      ]
+    },
+    "views": {
+      "explorer": [
+        {
+          "id": "errorExe.companion",
+          "name": "Error.exe",
+          "type": "webview",
+          "when": "errorExe.enabled"
+        }
+      ],
+      "errorExe": [
+        {
+          "id": "errorExe.main",
+          "name": "Error.exe",
+          "type": "webview",
+          "when": "errorExe.enabled"
+        }
+      ]
+    },
+    "commands": [
+      {
+        "command": "errorExe.show",
+        "title": "Error.exe: Show Companion"
+      },
+      {
+        "command": "errorExe.hide",
+        "title": "Error.exe: Hide Companion"
+      },
+      {
+        "command": "errorExe.toggle",
+        "title": "Error.exe: Toggle Companion"
+      },
+      {
+        "command": "errorExe.refresh",
+        "title": "Error.exe: Refresh Diagnostics"
+      },
+      {
+        "command": "errorExe.pause",
+        "title": "Error.exe: Pause Reactions"
+      },
+      {
+        "command": "errorExe.resume",
+        "title": "Error.exe: Resume Reactions"
+      },
+      {
+        "command": "errorExe.reset",
+        "title": "Error.exe: Reset Companion"
+      }
+    ],
+    "configuration": {
+      "title": "Error.exe",
+      "properties": {
+        "errorExe.enabled": {
+          "type": "boolean",
+          "default": true,
+          "scope": "application",
+          "description": "Show the Error.exe companion in the Explorer sidebar."
+        },
+        "errorExe.showWarnings": {
+          "type": "boolean",
+          "default": true,
+          "scope": "application",
+          "description": "Let warnings affect the companion's state. Warning counts remain visible when disabled."
+        },
+        "errorExe.messageRotation": {
+          "type": "boolean",
+          "default": true,
+          "scope": "application",
+          "description": "Rotate the companion's contextual messages while its view is visible."
+        },
+        "errorExe.animationEnabled": {
+          "type": "boolean",
+          "default": true,
+          "scope": "application",
+          "description": "Enable subtle screen effects in the companion view."
+        },
+        "errorExe.refreshInterval": {
+          "type": "integer",
+          "default": 30,
+          "minimum": 5,
+          "maximum": 3600,
+          "scope": "application",
+          "description": "Seconds between message rotations."
+        },
+        "errorExe.testAccuracyThreshold": {
+          "type": "number",
+          "default": 0.8,
+          "minimum": 0,
+          "maximum": 1,
+          "scope": "application",
+          "description": "Minimum decimal model evaluation metric required for an achievement. The result must be strictly greater than this threshold."
+        },
+        "errorExe.achievementDuration": {
+          "type": "integer",
+          "default": 8,
+          "minimum": 2,
+          "maximum": 60,
+          "scope": "application",
+          "description": "Seconds to display each build or test achievement."
+        },
+        "errorExe.enableBuildAchievements": {
+          "type": "boolean",
+          "default": true,
+          "scope": "application",
+          "description": "Celebrate successful build, compile, training, or export tasks and terminal commands."
+        },
+        "errorExe.enableTestAchievements": {
+          "type": "boolean",
+          "default": true,
+          "scope": "application",
+          "description": "Celebrate successful test tasks and qualifying evaluation results."
+        },
+        "errorExe.customMetricPatterns": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "default": [],
+          "scope": "application",
+          "description": "Regular expressions for custom evaluation output. Each pattern must define named groups 'metric' and 'value'."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run package",
+    "compile": "npm run check-types && npm run lint && node esbuild.js",
+    "watch": "npm-run-all -p watch:*",
+    "watch:esbuild": "node esbuild.js --watch",
+    "watch:tsc": "tsc --noEmit --watch --project tsconfig.json",
+    "package": "npm run check-types && npm run lint && node esbuild.js --production",
+    "compile-tests": "tsc -p . --outDir out",
+    "watch-tests": "tsc -p . -w --outDir out",
+    "pretest": "npm run compile-tests && npm run compile && npm run lint",
+    "check-types": "tsc --noEmit",
+    "lint": "eslint src",
+    "test": "vscode-test"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.144.0",
+    "@types/mocha": "^10.0.10",
+    "@types/node": "24.x",
+    "typescript-eslint": "^8.61.1",
+    "eslint": "^10.5.0",
+    "esbuild": "^0.28.1",
+    "npm-run-all": "^4.1.5",
+    "typescript": "^6.0.3",
+    "@vscode/test-cli": "^0.0.15",
+    "@vscode/test-electron": "^3.0.0"
+  },
+  "overrides": {
+    "diff": "^8.0.4",
+    "serialize-javascript": "^7.0.6"
+  }
+}
